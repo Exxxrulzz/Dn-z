@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hallo Andien!</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            background-color: black;
+        }
+        h1 {
+            color: #ff69b4; /* Warna pink */
+            font-size: 5em; /* Ukuran teks besar */
+            margin: 0;
+            padding: 0;
+            position: relative; /* Untuk mengatur posisi absolut anak */
+            line-height: 5.2; /* Jarak antar baris */
+            letter-spacing: 10px; /* Jarak antar karakter */
+        }
+        .char {
+            position: absolute;
+            opacity: 0;
+            animation: appear 1s ease-in-out forwards;
+            left: 50%;
+            transform: translateX(-50%); /* Center horizontally */
+        }
+        @keyframes appear {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px); /* Start slightly above */
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0); /* End at normal position */
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 id="message"></h1>
+    <script>
+        const message = "H A L O    A N D I E N    K A M U   L A G I   A F A ";
+        const messageElement = document.getElementById('message');
+        for (let i = 0; i < message.length; i++) {
+            const charElement = document.createElement('span');
+            charElement.classList.add('char');
+            charElement.textContent = message[i];
+            messageElement.appendChild(charElement);
+
+            // Tambahkan delay 1 detik untuk setiap karakter
+            charElement.style.animationDelay = `${i}s`;
+            charElement.style.top = `${i * 40}px`; // Adjust vertical spacing
+            
+        }
+    </script>
+</body>
+</html>
